@@ -1,0 +1,277 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:9006605549728188499",
+      "lastPropertyId": "15:8062569599956811509",
+      "name": "Observation",
+      "properties": [
+        {
+          "id": "1:592933627446317223",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6119514926636738280",
+          "name": "remoteUuid",
+          "type": 9
+        },
+        {
+          "id": "3:8669565356805592892",
+          "name": "userUuid",
+          "type": 9
+        },
+        {
+          "id": "4:7231336898324293482",
+          "name": "serviceUuid",
+          "type": 9
+        },
+        {
+          "id": "5:1325297212617541033",
+          "name": "serviceSlug",
+          "type": 9
+        },
+        {
+          "id": "6:4628217285840841956",
+          "name": "userGroupUuid",
+          "type": 9
+        },
+        {
+          "id": "7:4146901008257659222",
+          "name": "title",
+          "type": 9
+        },
+        {
+          "id": "8:8651091140294875730",
+          "name": "description",
+          "type": 9
+        },
+        {
+          "id": "9:1119943605515751025",
+          "name": "latitude",
+          "type": 8
+        },
+        {
+          "id": "10:3989615739808879019",
+          "name": "longitude",
+          "type": 8
+        },
+        {
+          "id": "11:8914398031741599250",
+          "name": "geocode",
+          "type": 9
+        },
+        {
+          "id": "12:6410837488077903880",
+          "name": "isPublic",
+          "type": 1
+        },
+        {
+          "id": "13:8898540565575833086",
+          "name": "syncStatus",
+          "type": 9
+        },
+        {
+          "id": "14:6482525189417705771",
+          "name": "createdAt",
+          "type": 10
+        },
+        {
+          "id": "15:8062569599956811509",
+          "name": "titleUuid",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:7961293682945556047",
+      "lastPropertyId": "5:6106950238021785835",
+      "name": "ObservationImage",
+      "properties": [
+        {
+          "id": "1:2846862663971755629",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8046626858691037428",
+          "name": "observationId",
+          "type": 6
+        },
+        {
+          "id": "3:3587355220535725351",
+          "name": "localPath",
+          "type": 9
+        },
+        {
+          "id": "4:1093883340864152611",
+          "name": "remoteUuid",
+          "type": 9
+        },
+        {
+          "id": "5:6106950238021785835",
+          "name": "uploaded",
+          "type": 1
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:9208865971335527599",
+      "lastPropertyId": "5:6630388761815687283",
+      "name": "Service",
+      "properties": [
+        {
+          "id": "1:1202683008449321671",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3433598906019206134",
+          "name": "uuid",
+          "type": 9
+        },
+        {
+          "id": "3:1562397292269550861",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:3573799326760598142",
+          "name": "slug",
+          "type": 9
+        },
+        {
+          "id": "5:6630388761815687283",
+          "name": "open",
+          "type": 1
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:1015276675855684759",
+      "lastPropertyId": "8:4904567731569992427",
+      "name": "User",
+      "properties": [
+        {
+          "id": "1:7054696292751708622",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4083709443921396169",
+          "name": "uuid",
+          "type": 9
+        },
+        {
+          "id": "3:8207720977025740372",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:8780067671223515074",
+          "name": "username",
+          "type": 9
+        },
+        {
+          "id": "5:8616704706147170638",
+          "name": "email",
+          "type": 9
+        },
+        {
+          "id": "6:4368216298871245822",
+          "name": "avatarLocalPath",
+          "type": 9
+        },
+        {
+          "id": "7:127191224380824742",
+          "name": "nrObs",
+          "type": 6
+        },
+        {
+          "id": "8:4904567731569992427",
+          "name": "avatarUrl",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5:7923309824319556000",
+      "lastPropertyId": "4:1433255599517973214",
+      "name": "UserGroup",
+      "properties": [
+        {
+          "id": "1:3043519284033146906",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:339022399370010646",
+          "name": "uuid",
+          "type": 9
+        },
+        {
+          "id": "3:6964751534628625629",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:1433255599517973214",
+          "name": "userUuid",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "6:6627519481000307131",
+      "lastPropertyId": "4:3250643862018770118",
+      "name": "UserService",
+      "properties": [
+        {
+          "id": "1:8099989617123264886",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1233113385827092680",
+          "name": "userUuid",
+          "type": 9
+        },
+        {
+          "id": "3:2949818519759319294",
+          "name": "serviceUuid",
+          "type": 9
+        },
+        {
+          "id": "4:3250643862018770118",
+          "name": "subscribed",
+          "type": 1
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "6:6627519481000307131",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
