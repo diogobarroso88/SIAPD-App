@@ -1,17 +1,3 @@
-# mysense_app_new
+SIAPD is a Flutter mobile application developed for field data collection in agriculture and viticulture. It supports offline observations, image collection, geolocation, user authentication, and synchronization with the mySense API.
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The application was redesigned from an older version with a cleaner architecture, local data storage, multilingual support, and improved offline capabilities.
