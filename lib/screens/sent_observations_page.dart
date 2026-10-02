@@ -6,6 +6,7 @@ import 'package:latlong2/latlong.dart';
 import '../l10n/app_localizations.dart';
 import '../models/remote_observation.dart';
 import '../models/service.dart';
+import '../models/service_titles.dart';
 import '../providers/services_provider.dart';
 import '../repositories/observations_repository.dart';
 import '../screens/remote_observation_details_page.dart';
@@ -62,7 +63,7 @@ class _SentObservationsPageState
                   child: ElevatedButton.icon(
                     onPressed: () {
                       Navigator.pop(context);
-                      _openDetails(observation);
+                      _openDetails(observation, _selectedService!);
                     },
                     icon: const Icon(Icons.info_outline),
                     label: Text(l10n.viewDetails),
@@ -76,12 +77,135 @@ class _SentObservationsPageState
     );
   }
 
-  void _openDetails(RemoteObservation observation) {
+  String _getServiceName(
+      Service service,
+      AppLocalizations l10n,
+      ) {
+    switch (service.name) {
+      case 'Registo de estados fenológicos da videira':
+        return l10n.serviceVinePhenologicalStates;
+
+      case 'Identificação de castas de videira':
+        return l10n.serviceVineVarietiesIdentification;
+
+      case 'Comunidade do Olival':
+        return l10n.serviceOliveCommunity;
+
+      case 'Contagem automática do Percevejo-do-arroz':
+        return l10n.serviceRiceStinkBugCounting;
+
+      case 'Flora digital de Portugal':
+        return l10n.serviceDigitalFloraPortugal;
+
+      case 'Identificação de pragas e doenças em espécies perenes':
+        return l10n.servicePerennialPestIdentification;
+
+      case 'Machine Learning':
+        return l10n.serviceMachineLearning;
+
+      case 'Observação biológica em fileiras produtivas':
+        return l10n.serviceBiologicalObservationProductiveRows;
+
+      case 'Registo da periculariosis do arroz':
+        return l10n.serviceRiceBlastRecord;
+
+      case 'Registo da presença de Cerambyx':
+        return l10n.serviceCerambyxPresenceRecord;
+
+      case 'Registo da presença de NMP':
+        return l10n.serviceNmpPresenceRecord;
+
+      case 'Registo da presença de pragas de gafanhoto':
+        return l10n.serviceLocustInfestationsRecord;
+
+      case 'Registo da pudenta do arroz':
+        return l10n.serviceRicePudentaRecord;
+
+      case 'Registo dos estados fenológicos da macieira':
+        return l10n.serviceApplePhenologicalStatesRecord;
+
+      case 'Grupo de testes internos':
+        return l10n.serviceInternalTestsGroup;
+
+      case 'Identificação de doenças da videira':
+        return l10n.serviceVineDiseaseIdentification;
+
+      default:
+        return service.name;
+    }
+  }
+
+  String _getPhenologicalStateTranslation(
+      String state,
+      AppLocalizations l10n,
+      ) {
+
+    final normalizedState = state
+        .trim()
+        .replaceAll(RegExp(r'\s+'), ' ')
+        .toLowerCase();
+
+    final entry = ServiceTitles.vinePhenologicalStateUuids.entries
+        .cast<MapEntry<String, String>?>()
+        .firstWhere(
+          (entry) => entry!.key.toLowerCase() == normalizedState,
+      orElse: () => null,
+    );
+
+    final uuid = entry?.value;
+
+    debugPrint('Título recebido: "$state"');
+    debugPrint('Título normalizado: "$normalizedState"');
+    debugPrint('UUID encontrado: "$uuid"');
+
+    switch (uuid) {
+      case 'a_winter_bud':
+        return l10n.phenologyAWinterBud;
+      case 'b_woolly_bud':
+        return l10n.phenologyBWoollyBud;
+      case 'c_bud_break':
+        return l10n.phenologyCBudBreak;
+      case 'd_leaf_emergence':
+        return l10n.phenologyDLeafEmergence;
+      case 'e_leaves_separated':
+        return l10n.phenologyELeavesSeparated;
+      case 'f_inflorescences_visible':
+        return l10n.phenologyFInflorescencesVisible;
+      case 'g_inflorescences_separated':
+        return l10n.phenologyGInflorescencesSeparated;
+      case 'h_flowers_separated':
+        return l10n.phenologyHFlowersSeparated;
+      case 'i_bloom':
+        return l10n.phenologyIBloom;
+      case 'j_fruit_set':
+        return l10n.phenologyJFruitSet;
+      case 'k_berries_pea_size':
+        return l10n.phenologyKBerriesPeaSize;
+      case 'l_berries_touching':
+        return l10n.phenologyLBerriesTouching;
+      case 'm_veraison':
+        return l10n.phenologyMVeraison;
+      case 'n_maturity':
+        return l10n.phenologyNMaturity;
+      case 'o_cane_maturation':
+        return l10n.phenologyOCaneMaturation;
+      case 'p_leaf_fall':
+        return l10n.phenologyPLeafFall;
+      default:
+        return state;
+    }
+  }
+
+  void _openDetails(
+      RemoteObservation observation,
+      Service service,
+      ) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (_) => RemoteObservationDetailsPage(
           observation: observation,
+          service: service,
         ),
       ),
     );
@@ -174,7 +298,7 @@ class _SentObservationsPageState
               items: services.map((service) {
                 return DropdownMenuItem<Service>(
                   value: service,
-                  child: Text(service.name),
+                  child: Text(_getServiceName(service, l10n)),
                 );
               }).toList(),
               onChanged: (service) {
@@ -375,7 +499,12 @@ class _SentObservationsPageState
                         return Card(
                           child: ListTile(
                             title: Text(
-                              observation.title,
+                              _selectedService?.slug == 'vine-phenological-states'
+                                  ? _getPhenologicalStateTranslation(
+                                observation.title,
+                                l10n,
+                              )
+                                  : observation.title,
                             ),
                             subtitle: Text(
                               '$photoCount '
@@ -385,7 +514,7 @@ class _SentObservationsPageState
                               Icons.chevron_right,
                             ),
                             onTap: () {
-                              _openDetails(observation);
+                              _openDetails(observation, _selectedService!);
                             },
                           ),
                         );

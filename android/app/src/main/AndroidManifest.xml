@@ -10,7 +10,7 @@
         android:required="false" />
 
     <application
-        android:label="mysense_app_new"
+        android:label="SIAPD"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 

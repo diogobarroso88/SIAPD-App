@@ -118,5 +118,22 @@
   "phenologyMVeraison": "Pintor",
   "phenologyNMaturity": "Maduración",
   "phenologyOCaneMaturation": "Maduración de la vara",
-  "phenologyPLeafFall": "Caída de las hojas"
+  "phenologyPLeafFall": "Caída de las hojas",
+
+  "serviceVinePhenologicalStates": "Estados Fenológicos de la Vid",
+  "serviceVineVarietiesIdentification": "Identificación de castas de vid",
+  "serviceOliveCommunity": "Comunidad del Olivo",
+  "serviceRiceStinkBugCounting": "Recuento automático de Eysarcoris ventralis",
+  "serviceDigitalFloraPortugal": "Flora Digital de Portugal",
+  "servicePerennialPestIdentification": "Identificación de plagas y enfermedades en especies perennes",
+  "serviceMachineLearning": "Aprendizaje Automático",
+  "serviceBiologicalObservationProductiveRows": "Observación biológica en cadenas productivas",
+  "serviceRiceBlastRecord": "Registro de la piriculariosis del arroz",
+  "serviceCerambyxPresenceRecord": "Registro de la presencia de Cerambyx",
+  "serviceNmpPresenceRecord": "Registro de la presencia de NMP",
+  "serviceLocustInfestationsRecord": "Registro de la presencia de plagas de langosta",
+  "serviceRicePudentaRecord": "Registro de la pudenta del arroz",
+  "serviceApplePhenologicalStatesRecord": "Registro de estados fenológicos del manzano",
+  "serviceInternalTestsGroup": "Grupo de pruebas internas",
+  "serviceVineDiseaseIdentification": "Detección de plagas de la vid"
 }

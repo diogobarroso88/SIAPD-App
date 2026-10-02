@@ -723,6 +723,102 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Queda de Folhas'**
   String get phenologyPLeafFall;
+
+  /// No description provided for @serviceVinePhenologicalStates.
+  ///
+  /// In pt, this message translates to:
+  /// **'Estados Fenológicos da Videira'**
+  String get serviceVinePhenologicalStates;
+
+  /// No description provided for @serviceVineVarietiesIdentification.
+  ///
+  /// In pt, this message translates to:
+  /// **'Identificação de castas de videira'**
+  String get serviceVineVarietiesIdentification;
+
+  /// No description provided for @serviceOliveCommunity.
+  ///
+  /// In pt, this message translates to:
+  /// **'Comunidade do Olival'**
+  String get serviceOliveCommunity;
+
+  /// No description provided for @serviceRiceStinkBugCounting.
+  ///
+  /// In pt, this message translates to:
+  /// **'Contagem automática do Percevejo-do-arroz'**
+  String get serviceRiceStinkBugCounting;
+
+  /// No description provided for @serviceDigitalFloraPortugal.
+  ///
+  /// In pt, this message translates to:
+  /// **'Flora digital de Portugal'**
+  String get serviceDigitalFloraPortugal;
+
+  /// No description provided for @servicePerennialPestIdentification.
+  ///
+  /// In pt, this message translates to:
+  /// **'Identificação de pragas e doenças em espécies perenes'**
+  String get servicePerennialPestIdentification;
+
+  /// No description provided for @serviceMachineLearning.
+  ///
+  /// In pt, this message translates to:
+  /// **'Machine Learning'**
+  String get serviceMachineLearning;
+
+  /// No description provided for @serviceBiologicalObservationProductiveRows.
+  ///
+  /// In pt, this message translates to:
+  /// **'Observação biológica em fileiras produtivas'**
+  String get serviceBiologicalObservationProductiveRows;
+
+  /// No description provided for @serviceRiceBlastRecord.
+  ///
+  /// In pt, this message translates to:
+  /// **'Registo da periculariosis do arroz'**
+  String get serviceRiceBlastRecord;
+
+  /// No description provided for @serviceCerambyxPresenceRecord.
+  ///
+  /// In pt, this message translates to:
+  /// **'Registo da presença de Cerambyx'**
+  String get serviceCerambyxPresenceRecord;
+
+  /// No description provided for @serviceNmpPresenceRecord.
+  ///
+  /// In pt, this message translates to:
+  /// **'Registo da presença de NMP'**
+  String get serviceNmpPresenceRecord;
+
+  /// No description provided for @serviceLocustInfestationsRecord.
+  ///
+  /// In pt, this message translates to:
+  /// **'Registo da presença de pragas de gafanhoto'**
+  String get serviceLocustInfestationsRecord;
+
+  /// No description provided for @serviceRicePudentaRecord.
+  ///
+  /// In pt, this message translates to:
+  /// **'Registo da pudenta do arroz'**
+  String get serviceRicePudentaRecord;
+
+  /// No description provided for @serviceApplePhenologicalStatesRecord.
+  ///
+  /// In pt, this message translates to:
+  /// **'Registo dos estados fenológicos da macieira'**
+  String get serviceApplePhenologicalStatesRecord;
+
+  /// No description provided for @serviceInternalTestsGroup.
+  ///
+  /// In pt, this message translates to:
+  /// **'Grupo de testes internos'**
+  String get serviceInternalTestsGroup;
+
+  /// No description provided for @serviceVineDiseaseIdentification.
+  ///
+  /// In pt, this message translates to:
+  /// **'Identificação de doenças da videira'**
+  String get serviceVineDiseaseIdentification;
 }
 
 class _AppLocalizationsDelegate

@@ -5,16 +5,19 @@ import '../objectbox.g.dart';
 import '../services/api_service.dart';
 import '../services/auth_storage_service.dart';
 import '../services/objectbox_service.dart';
+import '../services/profile_image_service.dart';
 
 class AuthRepository {
   final ApiService apiService;
   final AuthStorageService authStorage;
   final ObjectBoxService objectBox;
+  final ProfileImageService profileImageService;
 
   AuthRepository({
     required this.apiService,
     required this.authStorage,
     required this.objectBox,
+    required this.profileImageService,
   });
 
   Future<User> login({
@@ -53,12 +56,18 @@ class AuthRepository {
       final data = userResponse.data as Map<String, dynamic>;
 
 // 3. Criar o nosso User local
+      final avatarUrl = data['avatar'] as String? ?? '';
+
+      final avatarLocalPath =
+      await profileImageService.downloadAndSave(avatarUrl);
+
       final user = User(
         uuid: data['uuid'] as String? ?? '',
         name: data['name'] as String? ?? '',
         username: data['username'] as String? ?? '',
         email: data['email'] as String? ?? '',
-        avatarUrl: data['avatar'] as String? ?? '',
+        avatarUrl: avatarUrl,
+        avatarLocalPath: avatarLocalPath ?? '',
       );
 
       if (user.uuid.isEmpty) {

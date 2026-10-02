@@ -323,4 +323,59 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get phenologyPLeafFall => 'Queda de Folhas';
+
+  @override
+  String get serviceVinePhenologicalStates => 'Estados Fenológicos da Videira';
+
+  @override
+  String get serviceVineVarietiesIdentification =>
+      'Identificação de castas de videira';
+
+  @override
+  String get serviceOliveCommunity => 'Comunidade do Olival';
+
+  @override
+  String get serviceRiceStinkBugCounting =>
+      'Contagem automática do Percevejo-do-arroz';
+
+  @override
+  String get serviceDigitalFloraPortugal => 'Flora digital de Portugal';
+
+  @override
+  String get servicePerennialPestIdentification =>
+      'Identificação de pragas e doenças em espécies perenes';
+
+  @override
+  String get serviceMachineLearning => 'Machine Learning';
+
+  @override
+  String get serviceBiologicalObservationProductiveRows =>
+      'Observação biológica em fileiras produtivas';
+
+  @override
+  String get serviceRiceBlastRecord => 'Registo da periculariosis do arroz';
+
+  @override
+  String get serviceCerambyxPresenceRecord => 'Registo da presença de Cerambyx';
+
+  @override
+  String get serviceNmpPresenceRecord => 'Registo da presença de NMP';
+
+  @override
+  String get serviceLocustInfestationsRecord =>
+      'Registo da presença de pragas de gafanhoto';
+
+  @override
+  String get serviceRicePudentaRecord => 'Registo da pudenta do arroz';
+
+  @override
+  String get serviceApplePhenologicalStatesRecord =>
+      'Registo dos estados fenológicos da macieira';
+
+  @override
+  String get serviceInternalTestsGroup => 'Grupo de testes internos';
+
+  @override
+  String get serviceVineDiseaseIdentification =>
+      'Identificação de doenças da videira';
 }

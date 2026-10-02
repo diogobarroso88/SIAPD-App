@@ -322,4 +322,61 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get phenologyPLeafFall => 'Caída de las hojas';
+
+  @override
+  String get serviceVinePhenologicalStates => 'Estados Fenológicos de la Vid';
+
+  @override
+  String get serviceVineVarietiesIdentification =>
+      'Identificación de castas de vid';
+
+  @override
+  String get serviceOliveCommunity => 'Comunidad del Olivo';
+
+  @override
+  String get serviceRiceStinkBugCounting =>
+      'Recuento automático de Eysarcoris ventralis';
+
+  @override
+  String get serviceDigitalFloraPortugal => 'Flora Digital de Portugal';
+
+  @override
+  String get servicePerennialPestIdentification =>
+      'Identificación de plagas y enfermedades en especies perennes';
+
+  @override
+  String get serviceMachineLearning => 'Aprendizaje Automático';
+
+  @override
+  String get serviceBiologicalObservationProductiveRows =>
+      'Observación biológica en cadenas productivas';
+
+  @override
+  String get serviceRiceBlastRecord =>
+      'Registro de la piriculariosis del arroz';
+
+  @override
+  String get serviceCerambyxPresenceRecord =>
+      'Registro de la presencia de Cerambyx';
+
+  @override
+  String get serviceNmpPresenceRecord => 'Registro de la presencia de NMP';
+
+  @override
+  String get serviceLocustInfestationsRecord =>
+      'Registro de la presencia de plagas de langosta';
+
+  @override
+  String get serviceRicePudentaRecord => 'Registro de la pudenta del arroz';
+
+  @override
+  String get serviceApplePhenologicalStatesRecord =>
+      'Registro de estados fenológicos del manzano';
+
+  @override
+  String get serviceInternalTestsGroup => 'Grupo de pruebas internas';
+
+  @override
+  String get serviceVineDiseaseIdentification =>
+      'Detección de plagas de la vid';
 }

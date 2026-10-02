@@ -5,12 +5,78 @@ import '../models/remote_observation.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
+import '../models/service.dart';
+import '../models/service_titles.dart';
+
 class RemoteObservationDetailsPage extends StatelessWidget {
   final RemoteObservation observation;
+  final Service service;
+
+  String _getPhenologicalStateTranslation(
+      String state,
+      AppLocalizations l10n,
+      ) {
+
+    final normalizedState = state
+        .trim()
+        .replaceAll(RegExp(r'\s+'), ' ')
+        .toLowerCase();
+
+    final entry = ServiceTitles.vinePhenologicalStateUuids.entries
+        .cast<MapEntry<String, String>?>()
+        .firstWhere(
+          (entry) => entry!.key.toLowerCase() == normalizedState,
+      orElse: () => null,
+    );
+
+    final uuid = entry?.value;
+
+    debugPrint('Título recebido: "$state"');
+    debugPrint('Título normalizado: "$normalizedState"');
+    debugPrint('UUID encontrado: "$uuid"');
+
+    switch (uuid) {
+      case 'a_winter_bud':
+        return l10n.phenologyAWinterBud;
+      case 'b_woolly_bud':
+        return l10n.phenologyBWoollyBud;
+      case 'c_bud_break':
+        return l10n.phenologyCBudBreak;
+      case 'd_leaf_emergence':
+        return l10n.phenologyDLeafEmergence;
+      case 'e_leaves_separated':
+        return l10n.phenologyELeavesSeparated;
+      case 'f_inflorescences_visible':
+        return l10n.phenologyFInflorescencesVisible;
+      case 'g_inflorescences_separated':
+        return l10n.phenologyGInflorescencesSeparated;
+      case 'h_flowers_separated':
+        return l10n.phenologyHFlowersSeparated;
+      case 'i_bloom':
+        return l10n.phenologyIBloom;
+      case 'j_fruit_set':
+        return l10n.phenologyJFruitSet;
+      case 'k_berries_pea_size':
+        return l10n.phenologyKBerriesPeaSize;
+      case 'l_berries_touching':
+        return l10n.phenologyLBerriesTouching;
+      case 'm_veraison':
+        return l10n.phenologyMVeraison;
+      case 'n_maturity':
+        return l10n.phenologyNMaturity;
+      case 'o_cane_maturation':
+        return l10n.phenologyOCaneMaturation;
+      case 'p_leaf_fall':
+        return l10n.phenologyPLeafFall;
+      default:
+        return state;
+    }
+  }
 
   const RemoteObservationDetailsPage({
     super.key,
     required this.observation,
+    required this.service,
   });
 
   @override
@@ -34,10 +100,12 @@ class RemoteObservationDetailsPage extends StatelessWidget {
           const SizedBox(height: 4),
 
           Text(
-            observation.title,
-            style: Theme.of(context)
-                .textTheme
-                .headlineSmall,
+            service.slug == 'vine-phenological-states'
+                ? _getPhenologicalStateTranslation(
+              observation.title,
+              l10n,
+            )
+                : observation.title,
           ),
 
           if (observation.description.isNotEmpty) ...[

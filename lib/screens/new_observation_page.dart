@@ -317,8 +317,7 @@ class _NewObservationPageState extends State<NewObservationPage> {
     }
   }
 
-  Future<void> _getCurrentLocation() async {
-    final l10n = AppLocalizations.of(context)!;
+  Future<void> _getCurrentLocation(AppLocalizations l10n) async {
     setState(() {
       _isGettingLocation = true;
       _locationError = null;
@@ -419,6 +418,48 @@ class _NewObservationPageState extends State<NewObservationPage> {
     }
   }
 
+  String _getServiceName(
+      Service service,
+      AppLocalizations l10n,
+      ) {
+    switch (service.name) {
+      case 'Registo de estados fenológicos da videira':
+        return l10n.serviceVinePhenologicalStates;
+      case 'Identificação de castas de videira':
+        return l10n.serviceVineVarietiesIdentification;
+      case 'Comunidade do Olival':
+        return l10n.serviceOliveCommunity;
+      case 'Contagem automática do Percevejo-do-arroz':
+        return l10n.serviceRiceStinkBugCounting;
+      case 'Flora digital de Portugal':
+        return l10n.serviceDigitalFloraPortugal;
+      case 'Identificação de pragas e doenças em espécies perenes':
+        return l10n.servicePerennialPestIdentification;
+      case 'Machine Learning':
+        return l10n.serviceMachineLearning;
+      case 'Observação biológica em fileiras produtivas':
+        return l10n.serviceBiologicalObservationProductiveRows;
+      case 'Registo da periculariosis do arroz':
+        return l10n.serviceRiceBlastRecord;
+      case 'Registo da presença de Cerambyx':
+        return l10n.serviceCerambyxPresenceRecord;
+      case 'Registo da presença de NMP':
+        return l10n.serviceNmpPresenceRecord;
+      case 'Registo da presença de pragas de gafanhoto':
+        return l10n.serviceLocustInfestationsRecord;
+      case 'Registo da pudenta do arroz':
+        return l10n.serviceRicePudentaRecord;
+      case 'Registo dos estados fenológicos da macieira':
+        return l10n.serviceApplePhenologicalStatesRecord;
+      case 'Grupo de testes internos':
+        return l10n.serviceInternalTestsGroup;
+      case 'Identificação de doenças da videira':
+        return l10n.serviceVineDiseaseIdentification;
+      default:
+        return service.name;
+    }
+  }
+
   bool _isVarietyService(Service? service) {
     return service?.slug == 'vine-varieties-identification';
   }
@@ -430,8 +471,6 @@ class _NewObservationPageState extends State<NewObservationPage> {
   @override
   void initState() {
     super.initState();
-
-    _getCurrentLocation();
   }
 
   @override
@@ -442,11 +481,18 @@ class _NewObservationPageState extends State<NewObservationPage> {
     super.dispose();
   }
 
-  @override
+  bool _locationInitialized = false;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+
     final l10n = AppLocalizations.of(context)!;
+
+    if (!_locationInitialized) {
+      _locationInitialized = true;
+      _getCurrentLocation(l10n);
+    }
 
     final servicesProvider = context.read<ServicesProvider>();
     final userGroupsProvider = context.read<UserGroupsProvider>();
@@ -474,7 +520,8 @@ class _NewObservationPageState extends State<NewObservationPage> {
 
     if (userName.isNotEmpty) {
       for (final group in groups) {
-        if (group.name.trim().toLowerCase() == '${l10n.individualGroup} $userName') {
+        if (group.name.trim().toLowerCase() ==
+            '${l10n.individualGroup} $userName') {
           defaultGroup = group;
           break;
         }
@@ -811,7 +858,9 @@ class _NewObservationPageState extends State<NewObservationPage> {
               items: services.map((service) {
                 return DropdownMenuItem<Service>(
                   value: service,
-                  child: Text(service.name),
+                  child: Text(
+                    _getServiceName(service, l10n),
+                  ),
                 );
               }).toList(),
               onChanged: (service) {

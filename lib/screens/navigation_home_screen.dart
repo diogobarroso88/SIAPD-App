@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/auth_provider.dart';
+import '../providers/services_provider.dart';
+import '../providers/user_groups_provider.dart';
+import '../repositories/observations_repository.dart';
 import '../widgets/app_drawer.dart';
 import 'home_page.dart';
 import 'new_observation_page.dart';

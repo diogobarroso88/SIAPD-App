@@ -117,5 +117,22 @@
   "phenologyMVeraison": "Veraison",
   "phenologyNMaturity": "Maturity",
   "phenologyOCaneMaturation": "Cane Maturation",
-  "phenologyPLeafFall": "Leaf Fall"
+  "phenologyPLeafFall": "Leaf Fall",
+
+  "serviceVinePhenologicalStates": "Vine Phenological States",
+  "serviceVineVarietiesIdentification": "Grape Variety Identification",
+  "serviceOliveCommunity": "Olive Community",
+  "serviceRiceStinkBugCounting": "White-spotted stink bug counting",
+  "serviceDigitalFloraPortugal": "Digital Flora of Portugal",
+  "servicePerennialPestIdentification": "Perennial Pest Identification",
+  "serviceMachineLearning": "Machine Learning",
+  "serviceBiologicalObservationProductiveRows": "Biological Observation in Productive Chains",
+  "serviceRiceBlastRecord": "Record of Rice Blast",
+  "serviceCerambyxPresenceRecord": "Record of Cerambyx Presence",
+  "serviceNmpPresenceRecord": "Record of NMP Presence",
+  "serviceLocustInfestationsRecord": "Record of Locust Infestations",
+  "serviceRicePudentaRecord": "Record of Rice Pudenta",
+  "serviceApplePhenologicalStatesRecord": "Apple Tree Phenological States Record",
+  "serviceInternalTestsGroup": "Internal Tests Group",
+  "serviceVineDiseaseIdentification": "Vine Pest Detection"
 }

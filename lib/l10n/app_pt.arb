@@ -117,5 +117,22 @@
   "phenologyMVeraison": "Pintor",
   "phenologyNMaturity": "Maturação",
   "phenologyOCaneMaturation": "Atempamento da Vara",
-  "phenologyPLeafFall": "Queda de Folhas"
+  "phenologyPLeafFall": "Queda de Folhas",
+
+  "serviceVinePhenologicalStates": "Estados Fenológicos da Videira",
+  "serviceVineVarietiesIdentification": "Identificação de castas de videira",
+  "serviceOliveCommunity": "Comunidade do Olival",
+  "serviceRiceStinkBugCounting": "Contagem automática do Percevejo-do-arroz",
+  "serviceDigitalFloraPortugal": "Flora digital de Portugal",
+  "servicePerennialPestIdentification": "Identificação de pragas e doenças em espécies perenes",
+  "serviceMachineLearning": "Machine Learning",
+  "serviceBiologicalObservationProductiveRows": "Observação biológica em fileiras produtivas",
+  "serviceRiceBlastRecord": "Registo da periculariosis do arroz",
+  "serviceCerambyxPresenceRecord": "Registo da presença de Cerambyx",
+  "serviceNmpPresenceRecord": "Registo da presença de NMP",
+  "serviceLocustInfestationsRecord": "Registo da presença de pragas de gafanhoto",
+  "serviceRicePudentaRecord": "Registo da pudenta do arroz",
+  "serviceApplePhenologicalStatesRecord": "Registo dos estados fenológicos da macieira",
+  "serviceInternalTestsGroup": "Grupo de testes internos",
+  "serviceVineDiseaseIdentification": "Identificação de doenças da videira"
 }

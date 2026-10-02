@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -103,10 +105,10 @@ class AppDrawer extends StatelessWidget {
             radius: 38,
             backgroundColor:
             Theme.of(context).colorScheme.surfaceContainerHighest,
-            child: user?.avatarUrl.isNotEmpty == true
+            child: user?.avatarLocalPath.isNotEmpty == true
                 ? ClipOval(
-              child: Image.network(
-                user!.avatarUrl,
+              child: Image.file(
+                File(user!.avatarLocalPath),
                 width: 76,
                 height: 76,
                 fit: BoxFit.cover,

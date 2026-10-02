@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,6 +30,20 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     super.initState();
     _loadNumberOfObservations();
+  }
+
+  String _getInitials(String name) {
+    final parts = name.trim().split(RegExp(r'\s+'));
+
+    if (parts.isEmpty || parts.first.isEmpty) {
+      return '?';
+    }
+
+    if (parts.length == 1) {
+      return parts.first[0].toUpperCase();
+    }
+
+    return '${parts.first[0]}${parts.last[0]}'.toUpperCase();
   }
 
   Future<void> _loadNumberOfObservations() async {
@@ -104,26 +120,32 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(height: 60),
 
           CircleAvatar(
-            radius: 60,
+            radius: 50,
             backgroundColor:
             Theme.of(context).colorScheme.surfaceContainerHighest,
-            child: user.avatarUrl.isEmpty
-                ? const Icon(
-              Icons.person,
-              size: 60,
-            )
-                : ClipOval(
-              child: Image.network(
-                user.avatarUrl,
-                width: 120,
-                height: 120,
+            child: user.avatarLocalPath.isNotEmpty
+                ? ClipOval(
+              child: Image.file(
+                File(user.avatarLocalPath),
+                width: 100,
+                height: 100,
                 fit: BoxFit.cover,
                 errorBuilder: (_, __, ___) {
-                  return const Icon(
-                    Icons.person,
-                    size: 60,
+                  return Text(
+                    _getInitials(user.name),
+                    style: const TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
                   );
                 },
+              ),
+            )
+                : Text(
+              _getInitials(user.name),
+              style: const TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),

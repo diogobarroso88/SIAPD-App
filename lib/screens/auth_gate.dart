@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mysense_app_new/screens/splash_page.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/auth_provider.dart';
+import '../providers/locale_provider.dart';
 import 'login_page.dart';
 import 'navigation_home_screen.dart';
 
@@ -13,12 +15,21 @@ class AuthGate extends StatefulWidget {
 }
 
 class _AuthGateState extends State<AuthGate> {
+  bool _checkingSession = true;
+
   @override
   void initState() {
     super.initState();
 
-    Future.microtask(() {
-      context.read<AuthProvider>().checkSession();
+    Future.microtask(() async {
+      await context.read<LocaleProvider>().loadLocale();
+      await context.read<AuthProvider>().checkSession();
+
+      if (mounted) {
+        setState(() {
+          _checkingSession = false;
+        });
+      }
     });
   }
 
@@ -26,12 +37,8 @@ class _AuthGateState extends State<AuthGate> {
   Widget build(BuildContext context) {
     final authProvider = context.watch<AuthProvider>();
 
-    if (authProvider.isLoading) {
-      return const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
+    if (_checkingSession || authProvider.isLoading) {
+      return const SplashPage();
     }
 
     if (authProvider.isAuthenticated) {

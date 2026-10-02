@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'dart:io';
 
 import '../l10n/app_localizations.dart';
+import '../models/service_titles.dart';
 import '../repositories/observations_repository.dart';
 import '../models/observation.dart';
 import '../models/service.dart';
@@ -240,6 +241,120 @@ class _OfflineObservationsPageState
     );
   }
 
+  String _getServiceName(
+      Service service,
+      AppLocalizations l10n,
+      ) {
+    switch (service.name) {
+      case 'Registo de estados fenológicos da videira':
+        return l10n.serviceVinePhenologicalStates;
+
+      case 'Identificação de castas de videira':
+        return l10n.serviceVineVarietiesIdentification;
+
+      case 'Comunidade da Oliveira':
+        return l10n.serviceOliveCommunity;
+
+      case 'Contagem de percevejos do arroz':
+        return l10n.serviceRiceStinkBugCounting;
+
+      case 'Flora Digital de Portugal':
+        return l10n.serviceDigitalFloraPortugal;
+
+      case 'Identificação de pragas perenes':
+        return l10n.servicePerennialPestIdentification;
+
+      case 'Machine Learning':
+        return l10n.serviceMachineLearning;
+
+      case 'Observação biológica de linhas produtivas':
+        return l10n.serviceBiologicalObservationProductiveRows;
+
+      case 'Registo da brusone do arroz':
+        return l10n.serviceRiceBlastRecord;
+
+      case 'Registo da presença de Cerambyx':
+        return l10n.serviceCerambyxPresenceRecord;
+
+      case 'Registo da presença de NMP':
+        return l10n.serviceNmpPresenceRecord;
+
+      case 'Infestações de gafanhotos':
+        return l10n.serviceLocustInfestationsRecord;
+
+      case 'Registo da pudenta do arroz':
+        return l10n.serviceRicePudentaRecord;
+
+      case 'Estados fenológicos da macieira':
+        return l10n.serviceApplePhenologicalStatesRecord;
+
+      case 'Grupo de testes internos':
+        return l10n.serviceInternalTestsGroup;
+
+      case 'Identificação de doenças da videira':
+        return l10n.serviceVineDiseaseIdentification;
+
+      default:
+        return service.name;
+    }
+  }
+
+  String _getPhenologicalStateTranslation(
+      String state,
+      AppLocalizations l10n,
+      ) {
+    final normalizedState = state
+        .trim()
+        .replaceAll(RegExp(r'\s+'), ' ')
+        .toLowerCase();
+
+    final entry = ServiceTitles.vinePhenologicalStateUuids.entries
+        .cast<MapEntry<String, String>?>()
+        .firstWhere(
+          (entry) => entry!.key.toLowerCase() == normalizedState,
+      orElse: () => null,
+    );
+
+    final uuid = entry?.value;
+
+    switch (uuid) {
+      case 'a_winter_bud':
+        return l10n.phenologyAWinterBud;
+      case 'b_woolly_bud':
+        return l10n.phenologyBWoollyBud;
+      case 'c_bud_break':
+        return l10n.phenologyCBudBreak;
+      case 'd_leaf_emergence':
+        return l10n.phenologyDLeafEmergence;
+      case 'e_leaves_separated':
+        return l10n.phenologyELeavesSeparated;
+      case 'f_inflorescences_visible':
+        return l10n.phenologyFInflorescencesVisible;
+      case 'g_inflorescences_separated':
+        return l10n.phenologyGInflorescencesSeparated;
+      case 'h_flowers_separated':
+        return l10n.phenologyHFlowersSeparated;
+      case 'i_bloom':
+        return l10n.phenologyIBloom;
+      case 'j_fruit_set':
+        return l10n.phenologyJFruitSet;
+      case 'k_berries_pea_size':
+        return l10n.phenologyKBerriesPeaSize;
+      case 'l_berries_touching':
+        return l10n.phenologyLBerriesTouching;
+      case 'm_veraison':
+        return l10n.phenologyMVeraison;
+      case 'n_maturity':
+        return l10n.phenologyNMaturity;
+      case 'o_cane_maturation':
+        return l10n.phenologyOCaneMaturation;
+      case 'p_leaf_fall':
+        return l10n.phenologyPLeafFall;
+      default:
+        return state;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -361,7 +476,12 @@ class _OfflineObservationsPageState
             child: ListTile(
               onTap: () => _showObservationMenu(observation),
               title: Text(
-                observation.title.isNotEmpty
+                observation.serviceSlug == 'vine-phenological-states'
+                    ? _getPhenologicalStateTranslation(
+                  observation.title,
+                  l10n,
+                )
+                    : observation.title.isNotEmpty
                     ? observation.title
                     : l10n.untitled,
               ),
@@ -370,7 +490,9 @@ class _OfflineObservationsPageState
                 children: [
                   const SizedBox(height: 4),
                   Text(
-                    service?.name ?? observation.serviceSlug,
+                    service != null
+                        ? _getServiceName(service, l10n)
+                        : observation.serviceSlug,
                   ),
                   const SizedBox(height: 4),
                   Text(

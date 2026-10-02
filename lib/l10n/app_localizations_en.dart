@@ -321,4 +321,56 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get phenologyPLeafFall => 'Leaf Fall';
+
+  @override
+  String get serviceVinePhenologicalStates => 'Vine Phenological States';
+
+  @override
+  String get serviceVineVarietiesIdentification =>
+      'Grape Variety Identification';
+
+  @override
+  String get serviceOliveCommunity => 'Olive Community';
+
+  @override
+  String get serviceRiceStinkBugCounting => 'White-spotted stink bug counting';
+
+  @override
+  String get serviceDigitalFloraPortugal => 'Digital Flora of Portugal';
+
+  @override
+  String get servicePerennialPestIdentification =>
+      'Perennial Pest Identification';
+
+  @override
+  String get serviceMachineLearning => 'Machine Learning';
+
+  @override
+  String get serviceBiologicalObservationProductiveRows =>
+      'Biological Observation in Productive Chains';
+
+  @override
+  String get serviceRiceBlastRecord => 'Record of Rice Blast';
+
+  @override
+  String get serviceCerambyxPresenceRecord => 'Record of Cerambyx Presence';
+
+  @override
+  String get serviceNmpPresenceRecord => 'Record of NMP Presence';
+
+  @override
+  String get serviceLocustInfestationsRecord => 'Record of Locust Infestations';
+
+  @override
+  String get serviceRicePudentaRecord => 'Record of Rice Pudenta';
+
+  @override
+  String get serviceApplePhenologicalStatesRecord =>
+      'Apple Tree Phenological States Record';
+
+  @override
+  String get serviceInternalTestsGroup => 'Internal Tests Group';
+
+  @override
+  String get serviceVineDiseaseIdentification => 'Vine Pest Detection';
 }
